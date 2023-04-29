@@ -119,9 +119,11 @@ $.fn.select2.amd.require(['select2/compat/matcher'], function (oldMatcher) {
 });
 
 
-$('#reservationdate').datetimepicker({
-    minDate: new Date(),
-    format: 'L',
+$('.reservationdate').datetimepicker({
+    // minDate: new Date(),
+    // format: 'L',
+    format: 'DD-MM-YYYY',
+    minDate: new Date().setHours(0,0,0,0),
 
 });
 $('#fromdate').datetimepicker({

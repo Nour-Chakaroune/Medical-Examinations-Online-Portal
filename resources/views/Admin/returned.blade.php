@@ -72,9 +72,9 @@
                               <?php $i = 0 ?>
                               @foreach ($ret as $key=>$task)
                               <td>{{ $i }}</td>
-                              <td>{{ $task->getlabmedOn->namee }}</td>
+                              <td>{{ $task->getpendinglab->namee }}</td>
                               {{-- <td>{{ $task->getCustomerOn->serial }}</td> --}}
-                              <td>{{ $task->getBeneficiarynameOn->NAME }}</td>
+                              <td>{{ $task->getpendingbenef->NAME }}</td>
                               <td>
                                   <div class="form-group">
                                       <select class="form-control select2 form" name="labmed" multiple disabled style="width: 100%;">
@@ -90,7 +90,7 @@
                                 <button title="View" type="button" class="btn btn-outline-primary"   data-toggle="modal" data-target="#view{{ $task->id }}">
                                     <i class="fas fa-image"></i></button>
                               </td>
-                              <td>{{$task->created_at->format('d/m/Y H:i:s')}}</td>
+                              <td>{{$task->updated_at->format('d/m/Y H:i:s')}}</td>
                               <td>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                         <a title="Resend" href="/resend/{{ $task->id }}" class="btn btn-outline-info"><i class="fas fa-undo"></i></a>

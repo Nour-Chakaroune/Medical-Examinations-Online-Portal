@@ -139,7 +139,7 @@
                         <td> <i class="fas fa-undo" style="color: #467fd0"></i>&nbsp;
                             <a href="/returned" style="color: black;"><label role="button">Returned</label></a></td>
                         <td>
-                          <span class="right badge bg-gradient-info badge-info">{{ DB::table('RequestReturn')->where('serial',Auth()->User()->number)->count() }}</span>
+                          <span class="right badge bg-gradient-info badge-info">{{ DB::table('request')->where('serial',Auth()->User()->number)->where('Status','Returned')->count() }}</span>
                         </td>
                     </tr>
                       <tr>

@@ -28,7 +28,7 @@ class Admin extends Controller
         $request->validate([
             'fullname' => 'required',
             'email' => 'required|unique:users,email,'.Auth::user()->id,
-            'phone' => 'required|unique:users,phone,'.Auth::user()->id,
+            'phone' => 'required',
             'username' => 'required|unique:users,username,'.Auth::user()->id,
         ],
     );
@@ -89,14 +89,14 @@ class Admin extends Controller
         return view('Admin.rejected',compact('rej'));
     }
     public function getReturned(){
-        $ret=RequestReturn::where('serial',Auth()->User()->number)->orderBy('created_at','DESC')->get();
+        $ret=Requested::where('serial',Auth()->User()->number)->where('status','Returned')->orderBy('created_at','DESC')->get();
         return view('Admin.returned',compact('ret'));
     }
     public function deleteReturned($id){
-        return RequestReturn::deleteReturned($id);
+        return Requested::deleteReturned($id);
     }
     public function resendReturned($id){
-        return RequestReturn::resendReturned($id);
+        return Requested::resendReturned($id);
     }
     public function resubmitReturned(Request $request){
         $request->validate([
@@ -112,7 +112,7 @@ class Admin extends Controller
           'labmed.required' => 'Please specify medical center.',
           'date.required' => 'Please add date to your request.',
         ]);
-          return RequestReturn::resubmitReturned($request);
+          return Requested::resubmitReturned($request);
     }
 
 
